@@ -1,10 +1,10 @@
 CC = c++
 
-CFLAGS = -Wall -Wextra -Werror -std=c++98 -g
+CFLAGS = -std=c++98 -g # -Wall -Wextra -Werror
 
 INCLUDE = -Iinc
 
-SRC = src/main.cpp src/BitcoinExchange.cpp src/utils.cpp
+SRC = src/main.cpp src/DivideAndRule.cpp
 
 DBUILD = build/
 
