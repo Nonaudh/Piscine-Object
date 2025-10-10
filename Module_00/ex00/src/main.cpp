@@ -27,5 +27,25 @@ int main()
 	// std::cout << "Bank : " << std::endl;
 	// std::cout << bank << std::endl;
 
+	Bank bank(500);
+	
+	std::cout << bank << std::endl;
+
+	bank.createAccount(100);
+	bank.createAccount(200);
+	bank.createAccount(300);
+
+
+	bank.deleteAccount(0);
+
+	std::cout << bank << std::endl;
+
+	bank.createAccount(300);
+	bank.createAccount(400);
+
+	std::cout << bank << std::endl;
+
+	bank.deleteAccount(20);
+
 	return (0);
 }

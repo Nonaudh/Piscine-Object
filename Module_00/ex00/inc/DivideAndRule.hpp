@@ -2,8 +2,8 @@
 # define DIVIDEANDRULE_HPP
 
 #include <iostream>
-#include <vector>
-
+// #include <vector>
+#include <map>
 
 
 struct Bank
@@ -16,25 +16,34 @@ struct Bank
 				int value;
 
 			public :
-				Account(int id, int value);
+				Account(int id, int value)  : id(id), value(value){;}
+
 				const int	&getId(void) const {return (this->id);}
 				const int	&getvalue(void) const {return (this->value);}
 		};
 
 		int liquidity;
-		std::vector<Account *> clientAccounts;
+		std::map<int, Bank::Account *> clientAccounts;
 
 	public :
-		Bank(int liqui);
+		Bank(int liquidity);
 		~Bank(void);
 
-		void	CreateAccount(int value);
-		int		findId(std::vector<Bank::Account *> clientAccounts);
+		const int	&getLiquidity(void) const {return (this->liquidity);}
+		const std::map<int, Bank::Account *>	&getClientAccounts(void) const {return (this->clientAccounts);}
 
+		void	addLiquidity(int amount) {this->liquidity += amount;}
 
+		void	createAccount(int value_tmp);
+		void	deleteAccount(const int &id);
+
+		int		findId(const std::map<int, Bank::Account *> &clientAccounts);
+		
+		friend std::ostream& operator << (std::ostream& p_os, const Bank &p_bank);
+
+		friend const Account &operator [] (const int &id);
 };
 
-std::ostream& operator << (std::ostream& p_os, const Bank& p_bank);
 // std::ostream& operator << (std::ostream& p_os, const Account& p_account);
 
 #endif

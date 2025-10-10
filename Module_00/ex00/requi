@@ -16,5 +16,5 @@ copy will not be accepted
 • The Bank structure must contain an operator[] to get an account by it’s ID, but
 you aren’t allow to make a while or a for loop to find the account corresponding to
 such ID
-• The error management must be done via throw, and the main must handle those
+• The error management must be done via throw`, and the main must handle those
 errors
