@@ -55,6 +55,23 @@ void	Bank::deleteAccount(const int &id)
 		std::cout << "Account " << id << " does not exist" << std::endl;
 }
 
+void	Bank::giveLoan(int value, int id)
+{
+	 std::map<int, Bank::Account *>::iterator it  = this->clientAccounts.find(id);
+	 
+	 if (it == this->clientAccounts.end())
+	 {
+		std::cout << "Account " << id << " does not exist" << std::endl;
+		return ;
+	 }
+	 if (value > this->liquidity)
+	 {
+		std::cout << "Not enough liquidity in the Bank" << std::endl;
+		return ;
+	 }
+	 
+}
+
 std::ostream& operator << (std::ostream& p_os, const Bank &p_bank)
 {
 	std::map<int, Bank::Account *> clientAccounts = p_bank.getClientAccounts();
@@ -69,10 +86,10 @@ std::ostream& operator << (std::ostream& p_os, const Bank &p_bank)
 	return (p_os);
 }
 
-const Account	&operator [] (const int &id)
-{
+// const Account	&operator [] (const int &id)
+// {
 
-}
+// }
 
 // ACCOUNT
 

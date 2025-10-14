@@ -37,11 +37,13 @@ struct Bank
 		void	createAccount(int value_tmp);
 		void	deleteAccount(const int &id);
 
+		void	giveLoan(int value, int id);
+
 		int		findId(const std::map<int, Bank::Account *> &clientAccounts);
 		
 		friend std::ostream& operator << (std::ostream& p_os, const Bank &p_bank);
 
-		friend const Account &operator [] (const int &id);
+		// friend const Account &operator [] (const int &id);
 };
 
 // std::ostream& operator << (std::ostream& p_os, const Account& p_account);
