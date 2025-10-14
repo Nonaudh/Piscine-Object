@@ -11,15 +11,17 @@ struct Bank
 	private :
 		struct Account
 		{
-			private :
-				int id;
-				int value;
 
 			public :
+				int id;
+				int value;
+				int debt;
+
 				Account(int id, int value)  : id(id), value(value){;}
 
 				const int	&getId(void) const {return (this->id);}
-				const int	&getvalue(void) const {return (this->value);}
+				const int	&getValue(void) const {return (this->value);}
+				const int	&getDebt(void) const {return (this->debt);}
 		};
 
 		int liquidity;
@@ -34,12 +36,17 @@ struct Bank
 
 		void	addLiquidity(int amount) {this->liquidity += amount;}
 
+		void	addMoney(int value, int id);
+
 		void	createAccount(int value_tmp);
 		void	deleteAccount(const int &id);
 
 		void	giveLoan(int value, int id);
 
-		int		findId(const std::map<int, Bank::Account *> &clientAccounts);
+		int		nextId(const std::map<int, Bank::Account *> &clientAccounts);
+		void	bankTakeFivePercent(Bank &bank, int &amount);
+
+		void	loanPayement(int percentage);
 		
 		friend std::ostream& operator << (std::ostream& p_os, const Bank &p_bank);
 

@@ -4,12 +4,12 @@ CFLAGS = -std=c++98 -g # -Wall -Wextra -Werror
 
 INCLUDE = -Iinc
 
-SRC = src/main.cpp src/DivideAndRule.cpp
+SRC = src/main.cpp src/Bank/DivideAndRule.cpp src/Bank/Operateur.cpp \
+src/Bank/AccountManag.cpp src/Bank/MoneyFunc.cpp
 
 DBUILD = build/
 
 OBJ = $(addprefix $(DBUILD), $(SRC:%.cpp=%.o))
-
 NAME = DAR
 
 $(DBUILD)%.o: %.cpp

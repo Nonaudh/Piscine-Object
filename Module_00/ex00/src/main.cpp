@@ -29,23 +29,21 @@ int main()
 
 	Bank bank(500);
 	
-	std::cout << bank << std::endl;
 
 	bank.createAccount(100);
 	bank.createAccount(200);
 	bank.createAccount(300);
-
-
-	bank.deleteAccount(0);
-
+	
 	std::cout << bank << std::endl;
 
-	bank.createAccount(300);
-	bank.createAccount(400);
-
+	bank.giveLoan(100, 0);
+	bank.giveLoan(1000, 1);
 	std::cout << bank << std::endl;
 
-	bank.deleteAccount(20);
+	bank.loanPayement(10);
+	std::cout << bank << std::endl;
+
+
 
 	return (0);
 }
