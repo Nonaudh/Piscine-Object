@@ -36,7 +36,7 @@ struct Bank
 
 		void	addLiquidity(int amount) {this->liquidity += amount;}
 
-		void	addMoney(int value, int id);
+		// void	addMoney(int value, int id);
 
 		void	createAccount(int value_tmp);
 		void	deleteAccount(const int &id);
@@ -50,9 +50,10 @@ struct Bank
 		
 		friend std::ostream& operator << (std::ostream& p_os, const Bank &p_bank);
 
-		// friend const Account &operator [] (const int &id);
+		const Account &operator [] (const int &id);
+
+		friend std::ostream& operator << (std::ostream& p_os, const Account& p_account);
 };
 
-// std::ostream& operator << (std::ostream& p_os, const Account& p_account);
 
 #endif

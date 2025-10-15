@@ -14,15 +14,19 @@ std::ostream& operator << (std::ostream& p_os, const Bank &p_bank)
 	return (p_os);
 }
 
-// const Account	&operator [] (const int &id)
-// {
+const Bank::Account	&Bank::operator [] (const int &id)
+{
+	std::map<int, Bank::Account *>::iterator	it = this->clientAccounts.find(id);
 
-// }
+	if (it != this->clientAccounts.end())
+		return (*(it->second));
 
-// ACCOUNT
+	throw std::runtime_error("operator [] Out Of Bound");
+}
 
-// std::ostream& operator << (std::ostream& p_os, const Bank::Account& p_account)
-// {
-// 	p_os << "[" << p_account.getId() << "] - [" << p_account.getValue() << "]";
-// 	return (p_os);
-// }
+std::ostream& operator << (std::ostream& p_os, const Bank::Account& p_account)
+{
+	p_os << "Client " << p_account.getId() << " has " << p_account.getValue() << " $" << " and " << p_account.getDebt() << " $ debt " <<  std::endl;
+
+	return (p_os);
+}

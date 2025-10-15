@@ -43,7 +43,7 @@ int main()
 	bank.loanPayement(10);
 	std::cout << bank << std::endl;
 
-
+	std::cout << bank[0] << std::endl;
 
 	return (0);
 }
