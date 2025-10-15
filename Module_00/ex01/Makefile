@@ -1,11 +1,10 @@
 CC = c++
 
-CFLAGS = -std=c++98 -g -Wall -Wextra -Werror
+CFLAGS = -std=c++98 -g # -Wall -Wextra -Werror
 
 INCLUDE = -Iinc
 
-SRC = src/main.cpp src/Bank/DivideAndRule.cpp src/Bank/Operateur.cpp \
-src/Bank/AccountManag.cpp src/Bank/MoneyFunc.cpp
+SRC = src/main.cpp src/Graph.cpp
 
 DBUILD = build/
 
