@@ -26,6 +26,10 @@ class Graph
 		Graph(void) : size(0, 0) {;}
 		void	addVector2(Vector2 newPoint);
 
+		void	drawGraph(void);
+		void	drawLine(std::list<Vector2>::iterator &it, int yAxis);
+		void	printPoint(std::list<Vector2>::iterator &it, int xAxis,int yAxis);
+
 		friend std::ostream& operator << (std::ostream& p_os, const Graph &graph);
 };
 
