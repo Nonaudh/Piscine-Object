@@ -31,5 +31,5 @@ void	Bank::deleteAccount(const int &id)
 		this->clientAccounts.erase(it);
 	}
 	else
-		std::cout << "Account " << id << " does not exist" << std::endl;
+		throw (std::runtime_error("Account does not exist"));
 }

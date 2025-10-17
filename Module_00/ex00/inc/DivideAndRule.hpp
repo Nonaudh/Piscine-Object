@@ -49,9 +49,7 @@ struct Bank
 		void	loanPayement(int percentage);
 		
 		friend std::ostream& operator << (std::ostream& p_os, const Bank &p_bank);
-
 		const Account &operator [] (const int &id);
-
 		friend std::ostream& operator << (std::ostream& p_os, const Account& p_account);
 };
 
