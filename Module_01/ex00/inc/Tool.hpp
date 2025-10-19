@@ -15,6 +15,8 @@ class	Tool
 		Tool(void);
 		~Tool(void);
 		virtual void	use(void) = 0;
+		void	givenToWorker(Worker &worker);
+		void	takenFromOwner(void);
 };
 
 #endif

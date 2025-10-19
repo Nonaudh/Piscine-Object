@@ -20,6 +20,7 @@ class	Worker
 
 		// Shovel	*getShovel(void) const;
 		void	addTool(Tool *tool);
+		int		rmTool(Tool *tool);
 };
 
 #endif

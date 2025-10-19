@@ -12,8 +12,6 @@ class	Hammer : public Tool
 		Hammer(void);
 		~Hammer(void);
 		void	use(void);
-		void	givenToWorker(Worker &worker);
-		void	takenFromWorker(void);
 };
 
 #endif

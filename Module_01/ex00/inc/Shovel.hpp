@@ -12,8 +12,6 @@ class	Shovel : public Tool
 		Shovel(void);
 		~Shovel(void);
 		void	use(void);
-		void	givenToWorker(Worker &worker);
-		void	takenFromWorker(void);
 };
 
 #endif

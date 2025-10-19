@@ -5,7 +5,7 @@ CFLAGS = -std=c++98 -g # -Wall -Wextra -Werror
 INCLUDE = -Iinc
 
 SRC = src/main.cpp src/Shovel.cpp src/Worker.cpp src/Position.cpp \
-	src/Statistic.cpp src/Tool.cpp
+	src/Statistic.cpp src/Tool.cpp src/Hammer.cpp
 
 DBUILD = build/
 
@@ -29,5 +29,7 @@ fclean : clean
 	rm -f $(NAME)
 
 re: fclean all
+
+gdb: gdb -tui $(NAME)
 
 .PHONY : all clean fclean re

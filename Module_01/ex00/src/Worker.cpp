@@ -24,7 +24,19 @@ void	Worker::addTool(Tool *tool)
 // 	return (this->shovel);
 // }
 
-// void	Worker::setShovel(Shovel *shovel)
-// {
-// 	this->shovel = shovel;
-// }
+int	Worker::rmTool(Tool* tool)
+{
+	std::vector<Tool *>::iterator	it;
+	int exit_code = 1;
+
+	for (it = this->tools.begin(); it != this->tools.end(); ++it)
+	{
+		if (*it == tool)
+		{
+			this->tools.erase(it);
+			exit_code = 0;
+			break ;
+		}
+	}
+	return (exit_code);
+}
