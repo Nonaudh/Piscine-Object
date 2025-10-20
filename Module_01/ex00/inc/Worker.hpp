@@ -3,24 +3,29 @@
 
 # include "Position.hpp"
 # include "Statistic.hpp"
-# include <vector>
+# include <list>
 
 class	Tool;
+class	Workshop;
 
 class	Worker
 {
 	private :
 		Position	coordonnee;
 		Statistic	stat;
-		std::vector<Tool *> tools;
+		std::list<Tool *> tools;
 
 	public :
 		Worker(void);
 		~Worker(void);
 
-		// Shovel	*getShovel(void) const;
 		void	addTool(Tool *tool);
 		int		rmTool(Tool *tool);
+
+		int	requestRegister(Workshop &workshop);
+		int	requestRelease(Workshop &workshop);
+
+		void	work(void);
 };
 
 #endif

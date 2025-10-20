@@ -1,15 +1,29 @@
 #include "Worker.hpp"
 #include "Shovel.hpp"
 #include "Hammer.hpp"
+#include "Workshop.hpp"
 
 int main(void)
 {
 	Worker Bob;
-	Worker Pedro;
+	// Worker Pedro;
 
-	Hammer shovel;
+	Workshop	ws1;
+	// Workshop	ws2;
 
-	shovel.givenToWorker(Bob);
-	shovel.givenToWorker(Pedro);
-	shovel.takenFromOwner();
+	// Shovel shovel;
+
+	// shovel.givenToWorker(Bob);
+	// shovel.givenToWorker(Pedro);
+	// shovel.takenFromOwner();
+
+	Bob.requestRegister(ws1);
+
+	ws1.executeWorkDay();
+
+	Bob.requestRelease(ws1);
+
+	ws1.executeWorkDay();
+
+	Bob.requestRelease(ws1);
 }

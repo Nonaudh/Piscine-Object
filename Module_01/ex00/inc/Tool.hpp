@@ -13,7 +13,7 @@ class	Tool
 
 	public :
 		Tool(void);
-		~Tool(void);
+		virtual ~Tool(void);
 		virtual void	use(void) = 0;
 		void	givenToWorker(Worker &worker);
 		void	takenFromOwner(void);
