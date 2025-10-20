@@ -3,9 +3,11 @@
 
 # include "Position.hpp"
 # include "Statistic.hpp"
+# include "Workshop.hpp"
 # include <list>
 
 class	Tool;
+
 class	Workshop;
 
 class	Worker
@@ -22,10 +24,17 @@ class	Worker
 		void	addTool(Tool *tool);
 		int		rmTool(Tool *tool);
 
+		template <typename T>
+		T *getTool(void);
+
+		// template <typename Tool>
 		int	requestRegister(Workshop &workshop);
+		// template <typename Tool>
 		int	requestRelease(Workshop &workshop);
 
 		void	work(void);
 };
+
+# include "Worker.tpp"
 
 #endif
