@@ -1,7 +1,7 @@
+#include "Workshop.hpp"
 #include "Worker.hpp"
 #include "Shovel.hpp"
 #include "Hammer.hpp"
-#include "Workshop.hpp"
 
 int main(void)
 {
@@ -9,29 +9,31 @@ int main(void)
 	Tool *ptr;
 	// Worker Pedro;
 
-	// Workshop	ws1;
+	Workshop<Shovel>	ws1;
 	// Workshop	ws2;
 
-	Hammer shovel;
+	Shovel shovel;
 
 	shovel.givenToWorker(Bob);
 
-	ptr = Bob.getTool<Hammer>();
-	if (ptr)
-		std::cout << "Got this tool\n";
-	else
-		std::cout << "I dont\n";
+	// ptr = Bob.getTool<Hammer>();
+	// if (ptr)
+	// 	std::cout << "Got this tool\n";
+	// else
+	// 	std::cout << "I dont\n";
 
 	// shovel.givenToWorker(Pedro);
 	// shovel.takenFromOwner();
 
-	// Bob.requestRegister(ws1);
+	Bob.requestRegister(ws1);
 
-	// ws1.executeWorkDay();
+	ws1.executeWorkDay();
 
-	// Bob.requestRelease(ws1);
+	shovel.takenFromOwner();
 
-	// ws1.executeWorkDay();
+	Bob.requestRelease(ws1);
+
+	ws1.executeWorkDay();
 
 	// Bob.requestRelease(ws1);
 }

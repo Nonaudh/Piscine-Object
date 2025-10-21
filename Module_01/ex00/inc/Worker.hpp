@@ -3,11 +3,12 @@
 
 # include "Position.hpp"
 # include "Statistic.hpp"
-# include "Workshop.hpp"
+// # include "Workshop.hpp"
 # include <list>
 
 class	Tool;
 
+template <typename ToolNeeded>
 class	Workshop;
 
 class	Worker
@@ -16,6 +17,8 @@ class	Worker
 		Position	coordonnee;
 		Statistic	stat;
 		std::list<Tool *> tools;
+		// template <typename ToolNeeded>
+		// std::list<void *> WorkPlaces;
 
 	public :
 		Worker(void);
@@ -27,10 +30,10 @@ class	Worker
 		template <typename T>
 		T *getTool(void);
 
-		// template <typename Tool>
-		int	requestRegister(Workshop &workshop);
-		// template <typename Tool>
-		int	requestRelease(Workshop &workshop);
+		template <typename Tool>
+		int	requestRegister(Workshop<Tool> &workshop);
+		template <typename Tool>
+		int	requestRelease(Workshop<Tool> &workshop);
 
 		void	work(void);
 };

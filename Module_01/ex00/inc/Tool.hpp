@@ -2,8 +2,9 @@
 # define TOOL_HPP
 
 # include <iostream>
+# include "Worker.hpp"
 
-class	Worker;
+// class	Worker;
 
 class	Tool
 {

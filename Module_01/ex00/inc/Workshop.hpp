@@ -3,9 +3,11 @@
 
 #include <iostream>
 #include <list>
+# include "Worker.hpp"
 
-class	Worker;
+// class	Worker;
 
+template <typename ToolNeeded>
 class	Workshop
 {
 	private :
@@ -18,7 +20,11 @@ class	Workshop
 		int	registerWorker(Worker *worker);
 		int	releaseWorker(Worker *worker);
 
+		int	toolMissing(Worker *worker);
+
 		void	executeWorkDay(void);
 };
+
+#include "Workshop.tpp"
 
 #endif
