@@ -12,7 +12,50 @@ class Gear {
   int demultiplier
 }
 
+class Singleton<GearLever>
 
+class GearLever {
+  array<Gear>
+  int level
+  void change()
+  Gear *activeGear()
+}
 
+class Transmission {
+vector<Wheel *>
+void activate(float p_force)
+}
+
+class Crankshaft {
+Transmission *
+void receiveForce(float p_volume)
+}
+
+class ExplosionChamber {
+Crankshaft *
+fill(float p_volume)
+}
+
+class Injector {
+ExplosionChamber *
+void execute(float p_pression)
+}
+
+Singleton <|-- GearLever
+
+GearLever --> Gear
+
+Transmission o-- Wheel
+
+Crankshaft o-- Transmission
+
+ExplosionChamber o-- Crankshaft
+
+Injector <|-- LinkablePart
+Injector o-- ExplosionChamber
 
 @enduml
+
+
+https://plantuml.com/class-diagram#9dd2a6eca0c2a0e7
+https://www.visual-paradigm.com/guide/uml-unified-modeling-language/uml-class-diagram-tutorial/
