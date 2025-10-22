@@ -21,41 +21,129 @@ class GearLever {
   Gear *activeGear()
 }
 
+Singleton <|-- GearLever
+GearLever --> Gear
+
 class Transmission {
 vector<Wheel *>
 void activate(float p_force)
 }
+
+Transmission o-- Wheel
 
 class Crankshaft {
 Transmission *
 void receiveForce(float p_volume)
 }
 
+Crankshaft o-- Transmission
+
 class ExplosionChamber {
 Crankshaft *
 fill(float p_volume)
 }
+
+ExplosionChamber o-- Crankshaft
 
 class Injector {
 ExplosionChamber *
 void execute(float p_pression)
 }
 
-Singleton <|-- GearLever
-
-GearLever --> Gear
-
-Transmission o-- Wheel
-
-Crankshaft o-- Transmission
-
-ExplosionChamber o-- Crankshaft
-
 Injector <|-- LinkablePart
 Injector o-- ExplosionChamber
 
-@enduml
+class Motor {
+  Injector
+  ExplosionChamber
+  Crankshaft
+  void connectToTransmission(Transmission* p_transmission)
+}
 
+Motor --> Injector
+Motor --> ExplosionChamber
+Motor --> Crankshaft
+
+class Pedal {
+  LinkablePart *
+  void setTarget(LinkablePart* p_part)
+  void use(float p_pression)
+}
+
+Pedal o-- LinkablePart
+
+class Direction {
+  array<Wheel>
+  void turn(float p_angle)
+}
+
+Direction --> Wheel
+
+class DAE {
+  Direction *
+  float force
+  void use(float p_angle)
+}
+
+DAE o-- Direction
+
+class SteerWheel {
+  DAE *
+  void turn(float p_angle)
+}
+
+SteerWheel o-- DAE
+
+class Brake {
+  Wheel *
+  void execute(float p_force)
+  void attackWheel(Wheel* p_wheel)
+}
+
+Brake o-- Wheel
+
+class BrakeController {
+  array<Brake>
+  void execute(float p_pression)
+}
+
+BrakeController --> Brake
+
+class Cockpit {
+  Pedal
+  SteerWheel
+  GearLever
+  void manageObjects()
+}
+
+Cockpit --> Pedal
+Cockpit --> SteerWheel
+Cockpit --> GearLever
+
+class Electronics {
+  DAE
+}
+
+Electronics --> DAE
+
+class Car {
+  BrakeController
+  Direction
+  Transmission
+  Motor
+  Electronics
+  Cockpit
+  void vroumVroum()
+}
+
+Car --> BrakeController
+Car --> Direction
+Car --> Transmission
+Car --> Motor
+Car --> Electronics
+Car --> Cockpit
+
+@enduml
 
 https://plantuml.com/class-diagram#9dd2a6eca0c2a0e7
 https://www.visual-paradigm.com/guide/uml-unified-modeling-language/uml-class-diagram-tutorial/
