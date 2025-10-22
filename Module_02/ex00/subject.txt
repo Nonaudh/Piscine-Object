@@ -1,0 +1,18 @@
+@startuml
+
+abstract class LinkablePart {
+  void execute(float p_pression)
+}
+
+class Wheel {
+  void executeRotation(float p_force)
+}
+
+class Gear {
+  int demultiplier
+}
+
+
+
+
+@enduml
