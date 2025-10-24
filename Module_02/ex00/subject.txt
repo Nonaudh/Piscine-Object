@@ -1,7 +1,7 @@
 @startuml
 
 abstract class LinkablePart {
-  void execute(float p_pression)
+  void execute(float p_pression) = 0
 }
 
 class Wheel {
@@ -22,7 +22,7 @@ class GearLever {
 }
 
 Singleton <|-- GearLever
-GearLever --> Gear
+GearLever *-- Gear
 
 class Transmission {
 vector<Wheel *>
@@ -36,22 +36,22 @@ Transmission *
 void receiveForce(float p_volume)
 }
 
-Crankshaft o-- Transmission
+Crankshaft --> Transmission
 
 class ExplosionChamber {
 Crankshaft *
 fill(float p_volume)
 }
 
-ExplosionChamber o-- Crankshaft
+ExplosionChamber --> Crankshaft
 
 class Injector {
 ExplosionChamber *
 void execute(float p_pression)
 }
 
-Injector <|-- LinkablePart
-Injector o-- ExplosionChamber
+LinkablePart <|-- Injector
+Injector --> ExplosionChamber
 
 class Motor {
   Injector
@@ -60,9 +60,10 @@ class Motor {
   void connectToTransmission(Transmission* p_transmission)
 }
 
-Motor --> Injector
-Motor --> ExplosionChamber
-Motor --> Crankshaft
+Motor *-- Injector
+Motor *-- ExplosionChamber
+Motor *-- Crankshaft
+Motor --> Transmission
 
 class Pedal {
   LinkablePart *
@@ -70,14 +71,14 @@ class Pedal {
   void use(float p_pression)
 }
 
-Pedal o-- LinkablePart
+Pedal --> LinkablePart
 
 class Direction {
   array<Wheel>
   void turn(float p_angle)
 }
 
-Direction --> Wheel
+Direction *-- Wheel
 
 class DAE {
   Direction *
@@ -85,14 +86,14 @@ class DAE {
   void use(float p_angle)
 }
 
-DAE o-- Direction
+DAE --> Direction
 
 class SteerWheel {
   DAE *
   void turn(float p_angle)
 }
 
-SteerWheel o-- DAE
+SteerWheel --> DAE
 
 class Brake {
   Wheel *
@@ -100,14 +101,15 @@ class Brake {
   void attackWheel(Wheel* p_wheel)
 }
 
-Brake o-- Wheel
+Brake --> Wheel
 
 class BrakeController {
   array<Brake>
   void execute(float p_pression)
 }
 
-BrakeController --> Brake
+LinkablePart <|-- BrakeController
+BrakeController *-- Brake
 
 class Cockpit {
   Pedal
@@ -116,15 +118,15 @@ class Cockpit {
   void manageObjects()
 }
 
-Cockpit --> Pedal
-Cockpit --> SteerWheel
-Cockpit --> GearLever
+Cockpit *-- Pedal
+Cockpit *-- SteerWheel
+Cockpit *-- GearLever
 
 class Electronics {
   DAE
 }
 
-Electronics --> DAE
+Electronics *-- DAE
 
 class Car {
   BrakeController
@@ -136,14 +138,11 @@ class Car {
   void vroumVroum()
 }
 
-Car --> BrakeController
-Car --> Direction
-Car --> Transmission
-Car --> Motor
-Car --> Electronics
-Car --> Cockpit
+Car *-- BrakeController
+Car *-- Direction
+Car *-- Transmission
+Car *-- Motor
+Car *-- Electronics
+Car *-- Cockpit
 
 @enduml
-
-https://plantuml.com/class-diagram#9dd2a6eca0c2a0e7
-https://www.visual-paradigm.com/guide/uml-unified-modeling-language/uml-class-diagram-tutorial/
