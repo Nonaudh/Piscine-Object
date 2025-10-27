@@ -2,14 +2,18 @@
 # define ENGINE_HPP
 
 # include <iostream>
+# include "brake.hpp"
 
 class	Engine
 {
 	private :
 		bool	on;
+		Brake	*brake;
 
 	public :
-		Engine(void) : on(0) {;}
+
+
+		Engine(Brake &brakeRef) : on(0), brake(&brakeRef) {;}
 		~Engine(void) {;}
 
 		void	start(void) {
@@ -21,6 +25,10 @@ class	Engine
 			this->on = 0;
 			// add apply brake
 			std::cout << "Engine stopped" << std::endl;
+		}
+
+		int	isStoped(void) {
+			return (!this->on);
 		}
 	};
 
