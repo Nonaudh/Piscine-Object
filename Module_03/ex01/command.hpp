@@ -3,6 +3,7 @@
 
 # include <string>
 # include <vector>
+# include <iostream>
 
 class   Command
 {
@@ -13,10 +14,10 @@ class   Command
 		std::vector<std::pair<float, int> >	articles;
 
 	public :
-		Command(std::string client) {
+		Command(std::string day) {
 			this->id = 0;
-			this->date = "21/03/1999";
-			this->client = client;
+			this->date = day;
+			this->client = "client";
 		}
 		virtual ~Command(void) {;}
 
