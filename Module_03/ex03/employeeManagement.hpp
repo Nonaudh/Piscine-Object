@@ -22,10 +22,16 @@ class	EmployeeManager
 			employees.erase(ptr);
 		}
 
-		void	print(void) {
+		void	executeWorkday(void) {
 			for (std::set<Employee *>::iterator it = employees.begin();
 					it != employees.end(); ++it)
-					std::cout << (*it)->getName() << std::endl;
+				(*it)->executeWorkday();
+		}
+
+		void	calculatePayroll(void) {
+			for (std::set<Employee *>::iterator it = employees.begin();
+					it != employees.end(); ++it)
+				std::cout << (*it)->getName() << " " << (*it)->paymentDay() << "$" << std::endl;
 		}
 };
 

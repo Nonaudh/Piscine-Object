@@ -1,10 +1,21 @@
 #include "employeeManagement.hpp"
+#include "hourlyEmployee.hpp"
+#include "salariedEmployee.hpp"
+
+void	launchMonth(EmployeeManager& Mana)
+{
+	for (int i = 0; i < 4; ++i)  // 4 weeks
+		for (int i = 0; i < 5; ++i) // 5 days
+			Mana.executeWorkday();
+
+	Mana.calculatePayroll();
+}
 
 int	main(void)
 {
 	Employee marc("Marc");
-	Employee julien("Julien");
-	Employee pedro("Pedro");
+	TempWorker julien("Julien");
+	Apprentice pedro("Pedro");
 
 	EmployeeManager Mana;
 
@@ -13,5 +24,9 @@ int	main(void)
 	Mana.addEmployee(&pedro);
 
 	Mana.removeEmployee(&julien);
-	Mana.print();
+
+	pedro.schoolPeriod(0, 6);
+
+	launchMonth(Mana);
+
 }
