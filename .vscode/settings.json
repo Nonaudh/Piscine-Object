@@ -66,6 +66,12 @@
 		"typeinfo": "cpp",
 		"variant": "cpp",
 		"semaphore": "cpp",
-		"__nullptr": "cpp"
+		"__nullptr": "cpp",
+		"charconv": "cpp",
+		"format": "cpp",
+		"fstream": "cpp",
+		"iomanip": "cpp",
+		"queue": "cpp",
+		"text_encoding": "cpp"
 	}
 }
