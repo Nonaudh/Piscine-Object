@@ -21,35 +21,29 @@ void	Foo()
 {
 	StudentList& pedro = StudentList::getInstance();
 
-	std::cout << &pedro << std::endl;
-
 	Student s("Arnaud");
 
+	pedro.add(s);
 	pedro.add(s);
 }
 
 void	Bar()
 {
-	StudentList& pedro = StudentList::getInstance();
-
-	std::cout << &pedro << std::endl;
-
 	Student s("Jean");
-
-	pedro.add(s);
+ 	StudentList::getInstance().add(s);
 }
 
 int main (void)
 {
 	std::thread t1(Foo);
-	std::thread t2(Bar);
-	std::thread t3(Bar);
+	// std::thread t2(Bar);
+	// std::thread t3(Bar);
 
 	t1.join();
-	t2.join();
-	t3.join();
+	// t2.join();
+	// t3.join();
 
 	StudentList& l = StudentList::getInstance();
 
-	std::cout << std::dec <<  l.size() << std::endl;
+	std::cout <<  l << std::endl;
 }

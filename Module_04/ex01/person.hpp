@@ -11,13 +11,21 @@ class	Classroom;
 
 class Person
 {
-	private:
+	protected :
 		std::string _name;
+
+	private:
 		Room* _currentRoom;
 
 	public:
 		Person(std::string p_name) {
 			this->_name = p_name;
+		}
+		const std::string& getName() const {
+			return (this->_name);
+		}
+		const Person& getInst() const {
+			return (*this);
 		}
 		Room* room() {return (_currentRoom);}
 };
