@@ -24,7 +24,6 @@ void	Foo()
 	Student s("Arnaud");
 
 	pedro.add(s);
-	pedro.add(s);
 }
 
 void	Bar()
@@ -44,6 +43,8 @@ int main (void)
 	// t3.join();
 
 	StudentList& l = StudentList::getInstance();
+	// Student s("Arnaud");
+	// l.add(s);
 
-	std::cout <<  l << std::endl;
+	std::cout <<  "l" << std::endl;
 }

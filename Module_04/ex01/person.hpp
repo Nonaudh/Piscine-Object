@@ -3,6 +3,7 @@
 
 # include <string>
 # include <vector>
+# include <iostream>
 # include "form.hpp"
 
 class	Room;
@@ -20,6 +21,9 @@ class Person
 	public:
 		Person(std::string p_name) {
 			this->_name = p_name;
+		}
+		~Person(void) {
+			std::cout << this->_name << " got destroyed" << std::endl;
 		}
 		const std::string& getName() const {
 			return (this->_name);
