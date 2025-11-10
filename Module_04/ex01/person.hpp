@@ -28,9 +28,6 @@ class Person
 		const std::string& getName() const {
 			return (this->_name);
 		}
-		const Person& getInst() const {
-			return (*this);
-		}
 		Room* room() {return (_currentRoom);}
 };
 
