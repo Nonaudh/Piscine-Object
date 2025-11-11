@@ -29,14 +29,20 @@ class	SomethingList
 					this->data.push_back(val);
 		}
 
-		std::shared_ptr<T>	retrieve(std::shared_ptr<T> val) const {
+		typename std::list<std::shared_ptr<T>>::const_iterator	begin(void) {
+			return (this->data.begin());
+		}
+		
+		typename std::list<std::shared_ptr<T>>::const_iterator	end(void) {
+			return (this->data.end());
+		}
+
+		typename std::list<std::shared_ptr<T>>::const_iterator	retrieve(std::shared_ptr<T> val) const {
 			auto it = std::find_if(this->data.begin(), this->data.end(),
 				[&](const std::shared_ptr<T>& ptr) {
 					return (ptr.get() == val.get());
 				});
-				if (it != this->data.end())
-					return (*it);
-				return (nullptr);
+				return (it);
 		}
 
 		const std::list<std::shared_ptr<T>>& getData(void) const {

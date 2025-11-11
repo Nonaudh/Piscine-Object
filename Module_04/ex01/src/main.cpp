@@ -6,31 +6,19 @@
 #include <thread>
 #include "list.hpp"
 
-// int main (void)
-// {
-// 	StudentList& list = StudentList::getInstance();
-
-// 	std::cout << &list << std::endl;
-
-// 	StudentList &list2 = StudentList::getInstance();
-
-// 	std::cout << &list2 << std::endl;
-// }
-
-
 void	Foo()
 {
 	StudentList& pedro = StudentList::getInstance();
 
 	std::shared_ptr<Student> s(new Student("Arnaud"));
-	std::shared_ptr<Student> t(new Student("Pedro"));
+	std::shared_ptr<Student> t(new Student("Julien"));
 
 	pedro.add(s);
 	pedro.add(s);
 
-	if (pedro.retrieve(s))
+	if (pedro.retrieve(s) != pedro.end())
 		std::cout << s->getName() << " is on the list\n";
-	if (pedro.retrieve(t))
+	if (pedro.retrieve(t) != pedro.end())
 		std::cout << t->getName() << " is on the list\n";
 }
 
