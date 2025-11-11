@@ -73,5 +73,6 @@
 		"iomanip": "cpp",
 		"queue": "cpp",
 		"text_encoding": "cpp"
-	}
+	},
+	"C_Cpp.errorSquiggles": "disabled"
 }
