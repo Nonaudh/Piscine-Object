@@ -10,7 +10,8 @@ int	Bank::nextId(const std::map<int, Bank::Account *> &clientAccounts)
 	return (id);
 }
 
-void	Bank::createAccount(int amount)
+
+const Bank::Account&	Bank::createAccount(int amount)
 {
 	Account *newAccount = new Account(nextId(this->clientAccounts), 0);
 
@@ -21,6 +22,8 @@ void	Bank::createAccount(int amount)
 	newAccount->value += amount;
 
 	std::cout << "A new account (id: " << newAccount->getId() << ") was created with " << amount << "$" << std::endl;
+
+	return (*newAccount);
 }
 
 void	Bank::deleteAccount(const int &id)

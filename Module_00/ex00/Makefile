@@ -1,6 +1,6 @@
 CC = c++
 
-CFLAGS = -std=c++98 -g -Wall -Wextra -Werror
+CFLAGS = -std=c++98 -g #-Wall -Wextra -Werror
 
 INCLUDE = -Iinc
 

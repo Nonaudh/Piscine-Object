@@ -7,26 +7,31 @@
 
 struct Bank
 {
+	struct Account;
+
 	private :
-		struct Account
-		{
-
-			public :
-				int id;
-				int value;
-				int debt;
-
-				Account(int id, int value)  : id(id), value(value), debt(0){;}
-
-				const int	&getId(void) const {return (this->id);}
-				const int	&getValue(void) const {return (this->value);}
-				const int	&getDebt(void) const {return (this->debt);}
-		};
-
+		
 		int liquidity;
 		std::map<int, Bank::Account *> clientAccounts;
 
 	public :
+		struct Account
+			{
+				friend class Bank;
+
+				private :
+					int id;
+					int value;
+					int debt;
+
+					Account(int id, int value)  : id(id), value(value), debt(0){;}
+
+				public :
+					const int	&getId(void) const {return (this->id);}
+					const int	&getValue(void) const {return (this->value);}
+					const int	&getDebt(void) const {return (this->debt);}
+			};
+
 		Bank(int liquidity);
 		~Bank(void);
 
@@ -37,7 +42,7 @@ struct Bank
 
 		void	bankTransfer(int value, int id);
 
-		void	createAccount(int value_tmp);
+		const Account&	createAccount(int value_tmp);
 		void	deleteAccount(const int &id);
 
 		void	giveLoan(int value, int id);

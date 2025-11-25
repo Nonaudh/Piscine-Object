@@ -6,15 +6,16 @@ int main()
 	
 	try
 	{
-		bank.createAccount(100);
+		const Bank::Account& Jean = bank.createAccount(100);
+
 		bank.createAccount(200);
 		bank.createAccount(300);
 
-		bank.bankTransfer(200, 0);
+		bank.bankTransfer(200, Jean.getId());
 		
 		std::cout << std::endl << bank << std::endl;
 
-		bank.giveLoan(100, 0);
+		bank.giveLoan(100, Jean.getId());
 		bank.giveLoan(1000, 1);
 
 		std::cout << std::endl << bank << std::endl;
