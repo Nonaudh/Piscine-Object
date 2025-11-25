@@ -2,7 +2,6 @@
 # define DIVIDEANDRULE_HPP
 
 #include <iostream>
-// #include <vector>
 #include <map>
 
 
@@ -17,7 +16,7 @@ struct Bank
 				int value;
 				int debt;
 
-				Account(int id, int value)  : id(id), value(value){;}
+				Account(int id, int value)  : id(id), value(value), debt(0){;}
 
 				const int	&getId(void) const {return (this->id);}
 				const int	&getValue(void) const {return (this->value);}
@@ -36,7 +35,7 @@ struct Bank
 
 		void	addLiquidity(int amount) {this->liquidity += amount;}
 
-		// void	addMoney(int value, int id);
+		void	bankTransfer(int value, int id);
 
 		void	createAccount(int value_tmp);
 		void	deleteAccount(const int &id);
@@ -44,9 +43,10 @@ struct Bank
 		void	giveLoan(int value, int id);
 
 		int		nextId(const std::map<int, Bank::Account *> &clientAccounts);
-		void	bankTakeFivePercent(Bank &bank, int &amount);
+		void	bankTakeFivePercent(int &amount);
 
-		void	loanPayement(int percentage);
+		void	loanPayement(int amount);
+		void	AccountNeedToPay(std::map<int, Bank::Account *>::iterator& it, int amount);
 		
 		friend std::ostream& operator << (std::ostream& p_os, const Bank &p_bank);
 		const Account &operator [] (const int &id);

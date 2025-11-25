@@ -16,9 +16,11 @@ void	Bank::createAccount(int amount)
 
 	this->clientAccounts.insert(std::pair<int, Account *>(newAccount->getId(), newAccount));
 
-	bankTakeFivePercent(*this, amount);
+	bankTakeFivePercent(amount);
 
 	newAccount->value += amount;
+
+	std::cout << "A new account (id: " << newAccount->getId() << ") was created with " << amount << "$" << std::endl;
 }
 
 void	Bank::deleteAccount(const int &id)
@@ -29,6 +31,7 @@ void	Bank::deleteAccount(const int &id)
 	{
 		delete (it->second);
 		this->clientAccounts.erase(it);
+		std::cout << "Account " << id << " was deleted" << std::endl;
 	}
 	else
 		throw (std::runtime_error("Account does not exist"));

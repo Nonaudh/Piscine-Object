@@ -1,6 +1,6 @@
 CC = c++
 
-CFLAGS = -std=c++98 -g # -Wall -Wextra -Werror
+CFLAGS = -std=c++98 -g -Wall -Wextra -Werror
 
 INCLUDE = -Iinc
 
@@ -9,7 +9,7 @@ SRC = src/main.cpp src/Graph.cpp
 DBUILD = build/
 
 OBJ = $(addprefix $(DBUILD), $(SRC:%.cpp=%.o))
-NAME = DAR
+NAME = Graph
 
 $(DBUILD)%.o: %.cpp
 	@mkdir -p $(dir $@)

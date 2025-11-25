@@ -1,7 +1,9 @@
 #include "DivideAndRule.hpp"
 
 Bank::Bank(int liquidity) : liquidity(liquidity)
-{}
+{
+	std::cout << "A bank appeared with " << liquidity << "$" << std::endl;
+}
 
 Bank::~Bank(void)
 {

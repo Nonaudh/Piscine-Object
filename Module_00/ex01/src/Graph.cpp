@@ -22,10 +22,10 @@ bool	operator != (Vector2 &ref1, Vector2 &ref2)
 void	actualizeSize(Vector2 &size, Vector2 &newPoint)
 {
 	if (newPoint.x > size.x)
-		size.x = newPoint.x;
+		size.x = newPoint.x + 1;
 	
 	if (newPoint.y > size.y)
-		size.y = newPoint.y;
+		size.y = newPoint.y + 1;
 }
 
 void	Graph::addVector2(Vector2 newPoint)

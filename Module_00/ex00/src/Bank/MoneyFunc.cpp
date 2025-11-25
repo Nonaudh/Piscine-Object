@@ -1,12 +1,26 @@
 #include "DivideAndRule.hpp"
 
-void	Bank::bankTakeFivePercent(Bank &bank, int &amount)
+void	Bank::bankTakeFivePercent(int &amount)
 {
 	int	fivePercent = amount * 0.05;
 
-	bank.addLiquidity(fivePercent);
+	this->addLiquidity(fivePercent);
 
 	amount -= fivePercent;
+}
+
+void	Bank::bankTransfer(int value, int id)
+{
+	std::map<int, Bank::Account *>::iterator it  = this->clientAccounts.find(id);
+
+	if (it == this->clientAccounts.end())
+		throw (std::runtime_error("Account does not exist"));
+	
+	bankTakeFivePercent(value);
+
+	it->second->value += value;
+
+	std::cout << "Account " << id << " got a bank transfer of " << value << "$" << std::endl;
 }
 
 void	Bank::giveLoan(int amount, int id)
@@ -25,6 +39,24 @@ void	Bank::giveLoan(int amount, int id)
 	 this->liquidity -= amount;
 	 it->second->value += amount;
 	 it->second->debt += (amount * 1.05);
+
+	 std::cout << "A loan was given to Account " << id << " of " << amount << "$" << std::endl;
+}
+
+void	Bank::AccountNeedToPay(std::map<int, Bank::Account *>::iterator& it, int amount)
+{
+	if (it->second->getValue() >= amount)
+	{
+		it->second->value -= amount;
+		it->second->debt -= amount;
+
+		if (it->second->getDebt())
+			std::cout << "Account " << it->second->getId() << " pay back " << amount << "$" << std::endl;
+		else
+			std::cout << "Account " << it->second->getId() << " repay is debt" << std::endl;
+	}
+	else
+		throw (std::runtime_error("Not enough money to pay the rent"));
 }
 
 void	Bank::loanPayement(int amount)
@@ -35,21 +67,14 @@ void	Bank::loanPayement(int amount)
 	{
 		if (it->second->debt > 0)
 		{
-			if (it->second->value > amount)
+			if (it->second->debt > amount)
 			{
-				if (it->second->debt > amount)
-				{
-					it->second->value -= amount;
-	 				it->second->debt -= amount;
-				}
-				else
-				{
-					it->second->value -= it->second->debt;
-	 				it->second->debt -= it->second->debt;
-				}
+				AccountNeedToPay(it, amount);
 			}
 			else
-				std::cout << "Not enough money to pay the rent" << std::endl;
+			{
+				AccountNeedToPay(it, it->second->getDebt());
+			}
 		}
 	}
 }
