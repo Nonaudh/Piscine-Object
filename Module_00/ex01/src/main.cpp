@@ -22,5 +22,18 @@ int main (void)
 
 	g.drawGraph();
 
+	std::cout << std::endl;
+
+	try
+	{
+		Vector2 test = g.retrieve(3, 0);
+
+		std::cout << test.x << " " << test.y << std::endl;
+	}
+	catch (std::exception& e)
+	{
+		std::cout << e.what() << std::endl;
+	}
+
 	return (0);
 }

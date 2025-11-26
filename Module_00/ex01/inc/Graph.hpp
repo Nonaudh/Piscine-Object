@@ -3,6 +3,7 @@
 
 #include <list>
 #include <iostream>
+#include <exception>
 
 struct Vector2
 {
@@ -29,11 +30,9 @@ class Graph
 		void	drawGraph(void);
 		void	drawLine(std::list<Vector2>::iterator &it, int yAxis);
 		void	printPoint(std::list<Vector2>::iterator &it, int xAxis,int yAxis);
+		Vector2&	retrieve(int x, int y);
 
 		friend std::ostream& operator << (std::ostream& p_os, const Graph &graph);
 };
-
-
-
 
 # endif

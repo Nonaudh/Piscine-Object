@@ -28,6 +28,20 @@ void	actualizeSize(Vector2 &size, Vector2 &newPoint)
 		size.y = newPoint.y + 1;
 }
 
+Vector2&	Graph::retrieve(int x, int y)
+{
+	std::list<Vector2>::iterator it;
+
+	for (it = this->v.begin(); it != this->v.end(); ++it)
+	{
+		if (x == it->x && y == it->y)
+			break ;
+	}
+	if (it != this->v.end())
+		return (*it);
+	throw (std::runtime_error("Vector does not exist in Graph"));
+}
+
 void	Graph::addVector2(Vector2 newPoint)
 {
 	std::list<Vector2>::iterator it;
@@ -55,7 +69,6 @@ void	lineNumber(int y)
 		std::cout << "  ";
 }
 
-
 void	Graph::printPoint(std::list<Vector2>::iterator &it, int xAxis, int yAxis)
 {
 	if (it->x == xAxis && it->y == yAxis && it != this->v.end())
@@ -66,9 +79,7 @@ void	Graph::printPoint(std::list<Vector2>::iterator &it, int xAxis, int yAxis)
 	else if (yAxis != -1)
 		std::cout << ". ";
 	else
-	{
 		std::cout << xAxis << " ";
-	}
 }
 
 void	Graph::drawLine(std::list<Vector2>::iterator &it, int yAxis)
