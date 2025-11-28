@@ -24,14 +24,13 @@ int	Worker::requestRegister(Workshop<ToolNeeded> &workshop)
 
 	if (workshop.registerWorker(this))
 		return (1);
-	// this->WorkPlaces.push_back(&workshop);
 	return (0);
 }
 
 template <typename ToolNeeded>
 int	Worker::requestRelease(Workshop<ToolNeeded> &workshop)
 {
-	std::cout << "Worker request to be release from a Workshop" << std::endl;
+	std::cout << "Worker request to be released from a Workshop" << std::endl;
 
 	workshop.releaseWorker(this);
 	

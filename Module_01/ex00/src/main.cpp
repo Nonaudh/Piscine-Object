@@ -6,34 +6,32 @@
 int main(void)
 {
 	Worker Bob;
-	Tool *ptr;
-	// Worker Pedro;
+	Worker Pedro;
 
-	Workshop<Shovel>	ws1;
-	// Workshop	ws2;
+	Workshop<Shovel>	shop;
 
 	Shovel shovel;
+	Hammer hammer;
+	// Tool tool;
+
+	std::cout << std::endl;
 
 	shovel.givenToWorker(Bob);
 
-	// ptr = Bob.getTool<Hammer>();
-	// if (ptr)
-	// 	std::cout << "Got this tool\n";
-	// else
-	// 	std::cout << "I dont\n";
+	shovel.givenToWorker(Pedro);
 
-	// shovel.givenToWorker(Pedro);
-	// shovel.takenFromOwner();
+	hammer.givenToWorker(Pedro);
 
-	Bob.requestRegister(ws1);
+	Pedro.requestRegister(shop);
 
-	ws1.executeWorkDay();
+	Bob.requestRegister(shop);
 
-	shovel.takenFromOwner();
+	shop.executeWorkDay();
 
-	Bob.requestRelease(ws1);
+	Pedro.requestRelease(shop);
 
-	ws1.executeWorkDay();
+	shop.executeWorkDay();
 
-	// Bob.requestRelease(ws1);
+	std::cout << std::endl;
+
 }

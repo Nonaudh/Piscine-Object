@@ -1,11 +1,11 @@
 CC = c++
 
-CFLAGS = -std=c++98 -g # -Wall -Wextra -Werror
+CFLAGS = -std=c++98 -g -Wall -Wextra -Werror
 
 INCLUDE = -Iinc
 
 SRC = src/main.cpp src/Shovel.cpp src/Worker.cpp src/Position.cpp \
-	src/Statistic.cpp src/Tool.cpp src/Hammer.cpp #src/Workshop.cpp
+	src/Statistic.cpp src/Tool.cpp src/Hammer.cpp
 
 DBUILD = build/
 

@@ -4,8 +4,6 @@
 # include <iostream>
 # include "Worker.hpp"
 
-// class	Worker;
-
 class	Tool
 {
 	protected :

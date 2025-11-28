@@ -1,5 +1,4 @@
 #include "Worker.hpp"
-// #include "Workshop.hpp"
 
 template <typename ToolNeeded>
 Workshop<ToolNeeded>::Workshop()
@@ -34,7 +33,7 @@ int	Workshop<ToolNeeded>::registerWorker(Worker *worker)
 
 	if (toolMissing(worker))
 	{
-		std::cout << "Doesnt have the tool needed\n"; // to clean !
+		std::cout << "Worker does not have the tool needed" << std::endl;
 		return (1);
 	}
 

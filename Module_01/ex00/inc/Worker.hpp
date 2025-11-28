@@ -3,7 +3,6 @@
 
 # include "Position.hpp"
 # include "Statistic.hpp"
-// # include "Workshop.hpp"
 # include <list>
 
 class	Tool;
@@ -17,8 +16,6 @@ class	Worker
 		Position	coordonnee;
 		Statistic	stat;
 		std::list<Tool *> tools;
-		// template <typename ToolNeeded>
-		// std::list<void *> WorkPlaces;
 
 	public :
 		Worker(void);

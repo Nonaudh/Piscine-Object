@@ -5,8 +5,6 @@
 #include <list>
 # include "Worker.hpp"
 
-// class	Worker;
-
 template <typename ToolNeeded>
 class	Workshop
 {

@@ -4,6 +4,8 @@
 Tool::Tool(void)
 {
 	std::cout << "Tool Constructor" << std::endl;
+
+	this->numberOfUses = 0;
 }
 
 Tool::~Tool(void)
@@ -26,9 +28,8 @@ void	Tool::takenFromOwner(void)
 	if (this->owner)
 	{
 		if (this->owner->rmTool(this))
-			std::cout << "error rmTool\n";
+			std::cout << "error rmTool" << std::endl;
 		this->owner = NULL;
-		std::cout << "Tool was taken from a Worker" << std::endl;
+		std::cout << "Tool was taken away from a Worker" << std::endl;
 	}
 }
-
