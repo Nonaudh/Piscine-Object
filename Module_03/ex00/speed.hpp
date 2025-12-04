@@ -1,21 +1,26 @@
 #ifndef SPEED_HPP
 # define SPEED_HPP
 
+#include "transmission.hpp"
+
 class	Speed
 {
 	private :
 		int	actualSpeed;
-		// Engine	*engine;
+		Transmission	*transmission;
 
 	public :
 
-		Speed(void) : actualSpeed(0) {;}
+		Speed(Transmission &transmissionRef) : actualSpeed(0), transmission(&transmissionRef) {;}
 		~Speed(void) {;}
 
 		void	accelerate(int amount) {
-			this->actualSpeed += amount;
-			if (this->actualSpeed < 0)
-				this->actualSpeed = 0;
+			this->actualSpeed += amount * transmission->gearActualGear();
+			std::cout << "Car is now at " << this->actualSpeed << " speed" << std::endl;
+		}
+
+		void	stop(void) {
+			this->actualSpeed = 0;
 			std::cout << "Car is now at " << this->actualSpeed << " speed" << std::endl;
 		}
 

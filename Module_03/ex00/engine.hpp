@@ -23,7 +23,7 @@ class	Engine
 
 		void	stop(void) {
 			this->on = 0;
-			// add apply brake
+			brake->apply_emergency_brakes();
 			std::cout << "Engine stopped" << std::endl;
 		}
 

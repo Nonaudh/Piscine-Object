@@ -3,14 +3,14 @@
 
 # include <iostream>
 
-class	Tranmission
+class	Transmission
 {
 	private :
 		int actualGear;
 
 	public :
-		Tranmission(void) : actualGear(0) {;}
-		~Tranmission(void) {;}
+		Transmission(void) : actualGear(0) {;}
+		~Transmission(void) {;}
 
 		void	shift_gears_up(void) {
 			if (this->actualGear < 6)
@@ -31,6 +31,10 @@ class	Tranmission
 		void	reverse(void) {
 			this->actualGear = -1;
 			std::cout << "gear was put in reverse" << std::endl;
+		}
+
+		int	gearActualGear(void) {
+			return (this->actualGear);
 		}
 };
 

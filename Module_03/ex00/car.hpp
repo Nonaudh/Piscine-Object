@@ -10,14 +10,14 @@
 class	Car
 {
 	private :
-		Tranmission	transmission;
+		Transmission	transmission;
 		Speed	speed;
 		Wheel	wheel;
 		Brake	brake;
 		Engine	engine;
 
 	public :
-		Car(void) : brake(speed), engine(brake) {;}
+		Car(void) : brake(speed), engine(brake), speed(transmission) {;}
 		~Car(void) {;}
 
 		// engine
