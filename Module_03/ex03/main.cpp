@@ -14,6 +14,7 @@ void	launchMonth(EmployeeManager& Mana)
 int	main(void)
 {
 	Employee marc("Marc");
+	Employee leon("Leon");
 	TempWorker julien("Julien");
 	Apprentice pedro("Pedro");
 
@@ -21,11 +22,16 @@ int	main(void)
 
 	Mana.addEmployee(&marc);
 	Mana.addEmployee(&julien);
+	Mana.addEmployee(&leon);
 	Mana.addEmployee(&pedro);
 
-	Mana.removeEmployee(&julien);
+	Mana.removeEmployee(&leon);
 
-	pedro.schoolPeriod(0, 6);
+	pedro.schoolPeriod(0, 3);
+	pedro.hourOff(4);
+
+	julien.registerWorkHour(15);
+	julien.mobilise(0, 3);
 
 	launchMonth(Mana);
 
