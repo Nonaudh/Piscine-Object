@@ -1,6 +1,7 @@
 #include "LoggerFile.hpp"
 #include "LoggerOstream.hpp"
 #include <list>
+#include <vector>
 #include <iostream>
 
 void	fill(std::list<std::string>& theCrou)
@@ -29,11 +30,19 @@ int	main(void)
 	try
 	{
 		LoggerOstream	log(std::cout);
+		LoggerFile		gol("file");
+
+		std::vector<ILogger *> vec;
+
+		vec.push_back(&log);
+		vec.push_back(&gol);
 
 		for (std::list<std::string>::iterator it = theCrou.begin();
-			it != theCrou.end(); ++it)
+				it != theCrou.end(); ++it)
 		{
-			log.write(*it);
+			for (std::vector<ILogger *>::iterator l = vec.begin();
+					l != vec.end(); ++l)
+			(*l)->write(*it);
 		}	
 	}
 	catch (std::runtime_error& e)
