@@ -17,7 +17,7 @@ class   Command
 		Command(std::string day) {
 			this->id = 0;
 			this->date = day;
-			this->client = "client";
+			this->client = "Mike Tyson";
 		}
 		virtual ~Command(void) {;}
 
